@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Todo App</title>
+    <link rel="stylesheet" type="text/css" href="/static/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Todo App</h1>
+        <p>Welcome, {{ get_current_user() }}</p>
+        <ul>
+            % for task in user_tasks:
+            <li>{{ task }}
+                <a href="/delete/{{ user_tasks.index(task) }}">Delete</a>
+            </li>
+            % end
+        </ul>
+        <form action="/add" method="post">
+            <input name="task" type="text" placeholder="Add a new task" />
+            <button type="submit">Add Task</button>
+        </form>
+        <a href="/logout">Logout</a>
+    </div>
+</body>
+</html>
